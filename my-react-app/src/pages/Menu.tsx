@@ -9,6 +9,7 @@ interface Category {
 interface Product{
     id: number;
     name: string;
+    price: number;
     description: string;
     photo_url?: string;
 }
@@ -82,6 +83,7 @@ function Menu() {
                           </div>
                         )}
                         <h3 className="font-bold text-xl pt-2 mb-1">{prod.name}</h3>
+                        <p className="font-semibold text-lg text-green-700 mb-2 pt-3">Ціна: {prod.price} ₴</p>
                         <p className="text-gray-700 text-base pt-4 p-2.5 line-clamp-3">{prod.description}</p>
                       </li>
                     ))}
