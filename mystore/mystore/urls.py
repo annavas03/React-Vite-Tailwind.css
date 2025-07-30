@@ -14,21 +14,34 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+import os
+from django.views.static import serve
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path, include, re_path
 from django.http import HttpResponse
+from django.conf import settings
+from django.conf.urls.static import static  # 🟢 додай це
 from rest_framework.routers import DefaultRouter
-from product.views import CategoryViewSet
+from product.views import CategoryViewSet, ProductViewSet
 
 def home(request):
     return HttpResponse("Головна сторінка")
 
 router = DefaultRouter()
 router.register('categories', CategoryViewSet, basename='category')
+router.register('products', ProductViewSet, basename='product')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include('product.urls')),
+    path('api/', include(router.urls)),
     path('', home)
-
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+    urlpatterns += [
+            re_path(r'^image/(?P<path>.*)$', serve, {
+                'document_root': os.path.join(settings.BASE_DIR, 'image'),
+            }),
+        ]
