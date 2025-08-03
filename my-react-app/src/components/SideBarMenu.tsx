@@ -16,6 +16,7 @@ const SidebarMenu: React.FC<SidebarMenuProps> = ({ isOpen }) => {
                 <Link to="/" className="block px-4 py-2 rounded no-underline text-orange-500 hover:bg-yellow-500">Головна</Link>
                 <Link to="/menu" className="block px-4 py-2 rounded no-underline text-orange-500 hover:bg-yellow-500">Меню</Link>
                 <Link to="/profile" className="block px-4 py-2 rounded no-underline text-orange-500 hover:bg-yellow-500">Профіль</Link>
+                <Link to="/create-product" className="block px-4 py-2 rounded no-underline text-orange-500 hover:bg-yellow-500">Створити!</Link>
             </nav>
         </aside>
     );

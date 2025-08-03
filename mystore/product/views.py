@@ -3,7 +3,7 @@ from rest_framework.viewsets import ModelViewSet
 from .models import Category
 from .models import Product
 from .serializers import CategorySerializer
-from .serializers import ProductSerializer
+from .serializers import ProductSerializer, ProductCreateSerializer
 
 # Create your views here.
 class CategoryViewSet(ModelViewSet):
@@ -14,6 +14,11 @@ class CategoryViewSet(ModelViewSet):
 class ProductViewSet(ModelViewSet):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
+
+    def get_serializer_class(self):
+        if self.action in ['list', 'retrieve']:
+            return ProductSerializer
+        return ProductCreateSerializer
 
     def get_queryset(self):
         queryset = Product.objects.all()
