@@ -63,36 +63,35 @@ function Menu() {
             </ul>
 
             <section className="px-4 sm:px-10" style={{ height: 'calc(100vh - 150px)'}}>
-              {products.length === 0 ? (
-                <p className="text-center text-gray-500">Немає продуктів у цій категорії.</p>
-              ) : (
-                <div className="flex justify-center h-full overflow-auto">
-                  <ul className="grid gap-6 grid-cols-[repeat(auto-fit,minmax(250px,1fr))] w-full max-w-screen-2xl h-full">
-                    {products.map(prod => (
-                      <li key={prod.id} className="bg-stone-100 rounded-xl shadow-md p-4 flex flex-col items-center text-center h-full">
-                        {prod.photo_url ? (
-                          <img
-                            src={prod.photo_url}
-                            alt={prod.name}
-                            className="w-full object-cover rounded-md mb-3 flex-grow"
-                            style={{ maxHeight: '300px' }}
-                          />
-                        ) : (
-                          <div className="w-full bg-gray-200 rounded-md flex items-center justify-center text-gray-400 mb-3 flex-grow" style={{ maxHeight: '300px' }}>
-                            Нема фото
-                          </div>
-                        )}
-                        <h3 className="font-bold text-xl pt-2 mb-1">{prod.name}</h3>
-                        <p className="font-semibold text-lg text-green-700 mb-2 pt-3">Ціна: {prod.price} ₴</p>
-                        <p className="text-gray-700 text-base pt-4 p-2.5 line-clamp-3">{prod.description}</p>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
+                {products.length === 0 ? (
+                    <p className="text-center text-gray-500">Немає продуктів у цій категорії.</p>
+                ) : (
+                    <div className="flex justify-center h-full overflow-auto">
+                        <ul className="grid gap-6 grid-cols-[repeat(auto-fit,minmax(250px,1fr))] w-full max-w-screen-2xl h-full">
+                            {products.map(prod => (
+                                <li key={prod.id} className="bg-stone-100 rounded-xl shadow-md p-4 flex flex-col items-center text-center h-full">
+                                    {prod.photo_url ? (
+                                        <img
+                                            src={prod.photo_url}
+                                            alt={prod.name}
+                                            className="w-full object-cover rounded-md mb-3 flex-grow"
+                                            style={{ maxHeight: '300px' }}
+                                        />
+                                    ) : (
+                                        <div className="w-full bg-gray-200 rounded-md flex items-center justify-center text-gray-400 mb-3 flex-grow" style={{ maxHeight: '300px' }}>
+                                            Нема фото
+                                        </div>
+                                    )}
+                                    <h3 className="font-bold text-xl pt-2 mb-1">{prod.name}</h3>
+                                    <p className="font-semibold text-lg text-green-700 mb-2 pt-3">Ціна: {prod.price} ₴</p>
+                                    <p className="text-gray-700 text-base pt-4 p-2.5 line-clamp-3">{prod.description}</p>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                )}
             </section>
         </div>
     );
 }
-
 export default Menu;

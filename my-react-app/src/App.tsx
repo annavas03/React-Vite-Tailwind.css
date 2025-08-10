@@ -4,7 +4,7 @@ import './App.css'
 import Home from './pages/Home'
 import Menu from './pages/Menu'
 import CreateProduct from "./pages/CreateProduct.tsx";
-//import Profile from './pages/Profile';
+import Profile from './pages/Profile';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import SidebarMenu from "./components/SideBarMenu.tsx";
@@ -28,6 +28,7 @@ function App() {
                         <Route path="/" element={<Home />} />
                         <Route path="/menu" element={<Menu />} />
                         <Route path="/create-product" element={<CreateProduct />} />
+                        <Route path="/profile" element={<Profile />} />
                     </Routes>
 
                 </main>
